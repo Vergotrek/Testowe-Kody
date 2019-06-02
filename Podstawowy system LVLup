@@ -1,0 +1,108 @@
+Plik  (Main) :
+public static void main(String args[])
+    {
+        Potwor Smok = new Potwor(20,30,40,"Moon",1,0);
+        System.out.println("Nazwa Potora: " + Smok.getNazwa());
+        System.out.println("LVL: "+ Smok.getLVL());
+        System.out.println("Atak: " + Smok.getAtak());
+        System.out.println("Obrona: " + Smok.getObrona());
+        System.out.println("Zycie: " + Smok.getZycie());
+
+        Smok.LVLup();
+        System.out.println();
+
+        System.out.println("Nazwa Potora: " + Smok.getNazwa());
+        System.out.println("LVL: "+ Smok.getLVL());
+        System.out.println("Atak: " + Smok.getAtak());
+        System.out.println("Obrona: " + Smok.getObrona());
+        System.out.println("Zycie: " + Smok.getZycie());
+
+        if (Smok.getEXP()== 3){     // test czy działa
+            Smok.LVLup();
+            Smok.setEXP(0);
+
+        }
+        Smok.trening();
+        Smok.trening();
+        Smok.trening();
+
+        if (Smok.getEXP()== 3){
+            Smok.LVLup();
+            Smok.setEXP(0);
+
+        }
+        System.out.println();
+        System.out.println("Nazwa Potora: " + Smok.getNazwa());
+        System.out.println("LVL: "+ Smok.getLVL());
+        System.out.println("Atak: " + Smok.getAtak());
+        System.out.println("Obrona: " + Smok.getObrona());
+        System.out.println("Zycie: " + Smok.getZycie());
+        System.out.println("EXP: " + Smok.getEXP());
+    }
+    
+    Plik 2 (Ciało) :
+    
+    private int Zycie;
+    private int Atak;
+    private int Obrona;
+    private String Nazwa;
+    private int LVL;
+    private int EXP;
+
+
+    public Potwor(int Zycie, int Atak, int Obrona, String Nazwa, int LVL,int EXP)
+    {
+        this.Zycie = Zycie;
+        this.Atak = Atak;
+        this.Obrona = Obrona;
+        this.Nazwa = Nazwa;
+        this.LVL = LVL;
+        this.EXP = EXP;
+    }
+
+
+
+
+    public int getAtak() {
+        return Atak;
+    }
+
+    public int getZycie() {
+        return Zycie;
+    }
+
+    public int getObrona() {
+        return Obrona;
+    }
+
+    public String getNazwa() {
+        return Nazwa;
+    }
+
+    public int getLVL(){
+        return LVL;
+    }
+
+    public int getEXP() {
+        return EXP;
+    }
+
+    public void setEXP(int EXP) {
+        this.EXP = EXP;
+    }
+
+
+
+    public void LVLup() {
+       this.Atak = Atak+5;
+       this.Zycie = Zycie+5;
+       this.Obrona = Obrona+5;
+       this.LVL = LVL+1;
+
+    }
+
+    public void trening() {
+        this.EXP = EXP+1;
+
+
+    }
