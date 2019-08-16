@@ -1,0 +1,127 @@
+Plik pilot.java:
+public class pilot {
+
+    boolean OnOff;
+    int kanal;
+    int glos;
+
+    public pilot( boolean OnOff,int kanal,int glos)
+    {
+        this.OnOff = OnOff;
+        this.kanal = kanal;
+        this.glos = glos;
+
+    }
+
+    public int getGlos() {
+        return glos;
+    }
+
+    public void setGlos(int glos) {
+        this.glos = glos;
+    }
+
+    public int getKanal() {
+        return kanal;
+    }
+
+    public void setKanal(int kanal) {
+        this.kanal = kanal;
+    }
+
+
+    public boolean getOnOff() {
+        return OnOff;
+    }
+
+    public void setOnOff(boolean a) {
+        OnOff = a;
+    }
+}
+-----------------------------------------
+plik TV2.java :
+
+import java.util.Scanner;
+public class TV2 {
+    public static void main(String args[]) {
+
+
+
+            String p;
+            pilot rower = new pilot(false, 1, 15);
+        do {
+
+            if (rower.getOnOff() == true) {
+                System.out.println("TV jest włączony");
+                System.out.println("Obecny kanał: "+ rower.kanal);
+                System.out.println("Dostępne Opjce: OnOff GlosUP GlosDown KanalUP Kanal Down  1 2 3 4 5 6 7 8 9");
+
+                Scanner klikanie = new Scanner(System.in);
+                p = klikanie.next();
+
+                if (p.equals("OnOff")) {
+                    System.out.println("Telewizor został Wyłączony");
+                    rower.setOnOff(false);
+                } else if (p.equals("GlosUP")) {
+                    if (rower.getGlos() == 15) {
+
+                        System.out.println("Maksymanla głośność, wynosi ona: " + rower.glos);
+                    } else {
+                        rower.setGlos(rower.glos + 1);
+                        System.out.println("Poziom głosu wynosi: " + rower.glos);
+                    }
+                } else if (p.equals("GlosDown")) {
+                    if (rower.getGlos() == 1) {
+
+                        System.out.println("Minimalna głośność, wynosi ona: " + rower.glos);
+                    } else {
+                        rower.setGlos(rower.glos - 1);
+                        System.out.println("Poziom głosu wynosi: " + rower.glos);
+                    }
+
+                } else if (p.equals("KanalUP")) {
+                    if (rower.getKanal() == 9) {
+                        rower.setKanal(1);
+                        System.out.println("Aktualny kanał to: " + rower.kanal);
+                    } else {
+                        rower.setKanal(rower.kanal + 1);
+                        System.out.println("Aktualny kanał to: " + rower.kanal);
+                    }
+                } else if (p.equals("KanalDown")) {
+                    if (rower.getKanal() == 1) {
+                        rower.setKanal(9);
+                        System.out.println("Aktualny kanał to: " + rower.kanal);
+                    } else {
+                        rower.setKanal(rower.kanal - 1);
+                        System.out.println("Aktualny kanał to: " + rower.kanal);
+                    }
+                } else if (p.equals("1") || p.equals("2") || p.equals("3") || p.equals("4") || p.equals("5") ||
+                        p.equals("6") || p.equals("7") || p.equals("8") || p.equals("9")) {
+
+                    rower.setKanal(Integer.parseInt(p));
+                    System.out.println("Aktualny kanał to: " + rower.kanal);
+
+                }
+                else{
+                    System.out.println("Wybrany przycisk nie istnieje");
+                }
+
+            } else {
+                System.out.println("TV jest WYŁĄCZONY");
+                System.out.println("Dostępne Opcje : OnOff");
+
+                Scanner klikanie = new Scanner(System.in);
+                p = klikanie.next();
+                if (p.equals("OnOff")) {
+                    System.out.println("Przycisk sprawił, że telewizor WŁACZONY");
+                    rower.setOnOff(true);
+                } else {
+                    System.out.println("Wybrana Opcja jest niemożliwa");
+                }
+            }
+
+
+        } while (rower.OnOff == true);
+
+    }
+}
